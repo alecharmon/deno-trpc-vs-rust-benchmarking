@@ -1,0 +1,61 @@
+{
+  "version": "4",
+  "specifiers": {
+    "jsr:@std/path@^1.0.6": "1.0.8",
+    "npm:@trpc/client@*": "10.45.2_@trpc+server@10.45.2",
+    "npm:@trpc/client@^11.0.0-rc.593": "11.0.0-rc.608_@trpc+server@11.0.0-rc.608",
+    "npm:@trpc/server@^11.0.0-rc.593": "11.0.0-rc.608",
+    "npm:@types/node@*": "22.5.4",
+    "npm:zod@^3.23.8": "3.23.8"
+  },
+  "jsr": {
+    "@std/path@1.0.8": {
+      "integrity": "548fa456bb6a04d3c1a1e7477986b6cffbce95102d0bb447c67c4ee70e0364be"
+    }
+  },
+  "npm": {
+    "@trpc/client@10.45.2_@trpc+server@10.45.2": {
+      "integrity": "sha512-ykALM5kYWTLn1zYuUOZ2cPWlVfrXhc18HzBDyRhoPYN0jey4iQHEFSEowfnhg1RvYnrAVjNBgHNeSAXjrDbGwg==",
+      "dependencies": [
+        "@trpc/server@10.45.2"
+      ]
+    },
+    "@trpc/client@11.0.0-rc.608_@trpc+server@11.0.0-rc.608": {
+      "integrity": "sha512-ZvhYhewiXXo3Kfy7JazVShsJUJTyqgkEV1rjhioJ6r3aIGw0ZS6zyyjcq1w99DTIzRP//FgB239NG5c66Ki9sw==",
+      "dependencies": [
+        "@trpc/server@11.0.0-rc.608"
+      ]
+    },
+    "@trpc/server@10.45.2": {
+      "integrity": "sha512-wOrSThNNE4HUnuhJG6PfDRp4L2009KDVxsd+2VYH8ro6o/7/jwYZ8Uu5j+VaW+mOmc8EHerHzGcdbGNQSAUPgg=="
+    },
+    "@trpc/server@11.0.0-rc.608": {
+      "integrity": "sha512-+qxeyWlS+1zlTbekG7C+khDGZn788kLJG+ufO8mH/kgbRC+/a0OZSk7tyQI2Pf+UWeKc6KzrTi7TRBOOEBBE1A=="
+    },
+    "@types/node@22.5.4": {
+      "integrity": "sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==",
+      "dependencies": [
+        "undici-types"
+      ]
+    },
+    "undici-types@6.19.8": {
+      "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
+    },
+    "zod@3.23.8": {
+      "integrity": "sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g=="
+    }
+  },
+  "remote": {
+    "https://deno.land/std@0.106.0/_util/assert.ts": "2f868145a042a11d5ad0a3c748dcf580add8a0dbc0e876eaa0026303a5488f58",
+    "https://deno.land/std@0.106.0/_util/deep_assign.ts": "2f394c1835c5a3a86a54b929efcd7645db77ace8bf60d7bd19311f01110f1269",
+    "https://deno.land/std@0.106.0/testing/bench.ts": "d41a7f900adc687e85690a634d477d36fe868a2b0211c54d56b0a563ae30bea3"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/path@^1.0.6",
+      "npm:@trpc/client@^11.0.0-rc.593",
+      "npm:@trpc/server@^11.0.0-rc.593",
+      "npm:zod@^3.23.8"
+    ]
+  }
+}
