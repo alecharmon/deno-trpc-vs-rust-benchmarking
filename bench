@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo 'Rust code (axum)'
+wrk -t4 -c100 -d30s http://localhost:3030/todos
+
+echo
+echo
+
+echo 'Deno code'
+wrk -t4 -c100 -d30s http://localhost:3031/todos.list
