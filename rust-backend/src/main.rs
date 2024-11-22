@@ -1,6 +1,7 @@
-use reqwest;
+use axum::{extract::State, http::StatusCode, routing::get, Json, Router};
+use reqwest::{self, Client};
 use serde::{Deserialize, Serialize};
-use warp::Filter;
+use tokio::net::TcpListener;
 
 #[derive(Deserialize, Serialize)]
 struct Todo {
@@ -14,24 +15,26 @@ struct Todo {
 
 #[tokio::main]
 async fn main() {
-    // Define the route
-    let todos_route = warp::path("todos").and(warp::get()).and_then(handle_todos);
+    let client = Client::new();
 
-    // Start the server
-    warp::serve(todos_route).run(([127, 0, 0, 1], 3030)).await;
+    let app = Router::new()
+        .route("/todos", get(handle_todos))
+        .with_state(client);
+    axum::serve(TcpListener::bind("localhost:3030").await.unwrap(), app)
+        .await
+        .unwrap();
 }
 
-async fn handle_todos() -> Result<impl warp::Reply, warp::Rejection> {
+async fn handle_todos(client: State<Client>) -> Result<Json<Vec<Todo>>, StatusCode> {
     // Fetch the todos from the external API
-    let response = reqwest::get("https://jsonplaceholder.typicode.com/todos")
+    let response = client
+        .get("https://jsonplaceholder.typicode.com/todos")
+        .send()
         .await
-        .map_err(|_| warp::reject::not_found())?;
+        .map_err(|_| StatusCode::NOT_FOUND)?;
 
-    let todos: Vec<Todo> = response
-        .json()
-        .await
-        .map_err(|_| warp::reject::not_found())?;
+    let todos: Vec<Todo> = response.json().await.map_err(|_| StatusCode::NOT_FOUND)?;
 
     // Return the todos as JSON
-    Ok(warp::reply::json(&todos))
+    Ok(Json(todos))
 }
